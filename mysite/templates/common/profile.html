@@ -1,0 +1,29 @@
+{% extends "../base.html" %}
+{% load my_filter %}
+{% block content %}
+<div class="card col-md-4">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>아이디</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>가입일</th>
+                <td>{{ user.date_joined|date:"Y-m-d H:i" }}</td>
+            </tr>
+            <tr>
+                <th>최근 접속일</th>
+                <td>{{ user.last_login|date:"Y-m-d H:i" }}</td>
+            </tr>
+
+        </table>
+        <div class="mt-3">
+            <a href="{% url 'common:update_profile' %}" class="btn btn-warning">회원정보 수정</a>
+            <a href="{% url 'common:update_password' %}" class="btn btn-warning">비밀번호 변경</a>
+            <a href="{% url 'common:logout' %}" class="btn btn-danger">로그아웃</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

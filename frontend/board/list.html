@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>게시판</title>
+    <meta charset="UTF-8">
+    <!--화면 크기비율 일정하게유지-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--// bootstrap v5.3.3 -->
+    <!-- 사용자 정의 스타일시트 -->
+    <link rel="stylesheet" href="../static/style.css">
+    <!--// 사용자 정의 스타일시트 -->
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- 검색 -->
+        <div class="row justify-content-between mb-3"><!-- 양쪽 끝에 배치 -->
+            <!-- 검색창 -->
+            <div class="col-4">
+                <form id="searchForm">
+                    <div class="input-group"><!-- input과 button을 바로 옆에 오도록 배치 -->
+                        <input type="text" id="keyword" placeholder="검색어를 입력하세요." class="form-control">
+                        <button type="button" class="btn btn-primary">검색</button>
+                    </div>
+                </form>
+            </div>
+            <!--// 검색창 -->
+            <!-- 게시글 등록버튼 -->
+            <div class="col-4 text-end"><!-- text-end: 오른쪽 끝으로 배치 -->
+                <a class="btn btn-primary" href="create.html">게시글 등록</a>
+            </div>
+            <!--// 게시글 등록버튼 -->
+
+        </div>
+        <!--// 검색 -->
+        <!-- 게시글 목록 -->
+        <div class="mb-3">
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr class="text-center"><!--th에 해당하는 글씨들이 가운데 정렬로 표현된다.-->
+                        <th class="col-1">순번</th><!--th: 글씨가 굵고 진하게-->
+                        <th class="col-6">제목</th>
+                        <th class="col-2">글쓴이</th>
+                        <th class="col-3">등록일시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td><a href="read.html">제목 1</a></td>
+                        <td class="text-center">홍길동</td>
+                        <td class="text-center">년-월-일 시:분</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td>제목 2</td>
+                        <td class="text-center">홍길동</td>
+                        <td class="text-center">년-월-일 시:분</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td>제목 3</td>
+                        <td class="text-center">홍길동</td>
+                        <td class="text-center">년-월-일 시:분</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td>제목 4</td>
+                        <td class="text-center">홍길동</td>
+                        <td class="text-center">년-월-일 시:분</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">5</td>
+                        <td>제목 5</td>
+                        <td class="text-center">홍길동</td>
+                        <td class="text-center">년-월-일 시:분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--// 게시글 목록 -->
+        <!-- 페이징 -->
+        <div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link">이전</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">다음</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--// 페이징 -->
+    </div>
+    <!-- bootstrap v5.3.3 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!--// bootstrap v5.3.3 -->
+
+    <!-- 사용자 정의 자바스크립트 -->
+    <script src="../static/script.js"></script>
+    <!--// 사용자 정의 자바스크립트 -->
+
+</body>
+
+</html>

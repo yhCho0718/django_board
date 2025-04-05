@@ -1,0 +1,136 @@
+{% extends "../base.html" %}
+{% load my_filter %}
+{% block content %}
+
+{% if username %}
+<div class="alert alert-success alert-dismissible fade now" role="alert">
+    아이디는 <strong>{{ username }}</strong>입니다.
+    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="card col-md-4">
+    <div class="card-body">
+        <form id="find_usernameForm" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="first_name" class="form-label">이름</label>
+                <input type="text" id="first_name" name="first_name" class="form-control" placeholder="이름을 입력하세요." value="{{ form.first_name.value|default_if_none:'' }}">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">이메일</label>
+                <input type="text" id="email" name="email" class="form-control" placeholder="이메일을 입력하세요." value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">아이디 찾기</button>
+                <a href="{% url 'common:reset_password' %}" class="btn btn-warning">비밀번호 초기화</a>
+                <a href="{% url 'common:login' %}" class="btn btn-primary">로그인</a>
+                <a href="{% url 'common:register' %}" class="btn btn-success">회원가입</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        //jquery
+        $('#first_name').focus();
+        //# : id
+        // . :class
+
+        // 입력 폼 유효성 검사
+        $('#find_usernameForm').validate({
+            rules: {
+                first_name: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+            },
+            messages: {
+                first_name: {
+                    required: '이름을 입력하세요.',
+                },
+                email: {
+                    required: '이메일을 입력하세요.',
+                    email: '올바른 이메일 형식을 입력하세요.',
+                },
+            },
+            errorClass: 'is-invalid',
+            validClass: 'is-valid',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.mb-3').append(error);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass(errorClass).removeClass(validClass);
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).addClass(validClass).removeClass(errorClass);
+            },
+            submitHandler: function(form) {
+                form.submit();
+            },
+        });
+
+
+        /*
+        // 입력 폼 유효성 검사
+        $('#registerForm').on('submit', function(event){
+            // 이름 입력 폼 유효성 검사
+            if($('#first_name').val() == '') { 
+                alert('이름을 입력하세요.');
+                $('#first_name').focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // 이메일 입력 폼 유효성 검사
+            if($('#email').val() == '') {
+                alert('이메일을 입력하세요.');
+                $('#email').focus();
+                event.preventDefault();
+                return false;
+            }
+        
+            // 아이디 입력 폼 유효성 검사
+            if($('#username').val() == '') {
+                alert('아이디를 입력하세요.');
+                $('#username').focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // 비밀번호 입력 폼 유효성 검사
+            if($('#password').val() == '') {
+                alert('비밀번호를 입력하세요.');
+                $('#password').focus();
+                event.preventDefault();
+                return false;
+            }
+            
+            // 비밀번호 확인 입력 폼 유효성 검사
+            if($('#password_check').val() == '') {
+                alert('비밀번호 확인을 입력하세요.');
+                $('#password_check').focus();
+                event.preventDefault();
+                return false;
+            }
+
+            // 비밀번호와 비밀번호 확인이 일치하는지 검사
+            if($('#password').val() != $('#password_check').val()) {
+                alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+                $('#password').focus();
+                event.preventDefault();
+                return false;
+            }
+
+        });
+        */
+    </script>
+{% endblock %}
